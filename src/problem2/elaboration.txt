@@ -1,0 +1,35 @@
+High-Level Architecture for a Highly Available Trading System on AWS
+
+1. User Access Layer
+AWS CloudFront: Content delivery network (CDN) to accelerate UI/UX performance by caching content closer to users
+Application Load Balancer (ALB): Distributes incoming traffic across multiple backend services, ensuring even load balancing and fault tolerance
+Amazon API Gateway: Handles REST and WebSocket API requests for real-time trading updates, providing authentication, throttling, and monitoring
+
+2. Backend Services Layer
+AWS Lambda: Event-driven microservices for lightweight, scalable functions such as order validation and notifications
+AWS Fargate: Runs containerized trading engine and supporting microservices, eliminating the need to manage infrastructure
+Amazon SQS: Message queue for asynchronous order processing, improving system decoupling and scalability
+Amazon EventBridge: Event bus for real-time event-driven architecture, enabling seamless integration between services
+
+3. Database & Storage Layer
+Amazon DynamoDB: Stores real-time order books and user sessions with high-speed read/write capabilities
+DynamoDB On-Demand Mode: Adjusts capacity automatically based on workload demand, ensuring cost-effective scalability
+Amazon Aurora PostgreSQL: Stores historical transactions, account balances, and trade records with high availability and strong consistency
+Aurora Read Replicas: Enhances read scalability by offloading read traffic from the primary Aurora database
+Amazon S3: Stores trade logs, backups, and static assets efficiently with high durability
+AWS Glacier: Cost-effective long-term archival storage for historical trading data and log
+
+4. Security & Monitoring
+AWS WAF: Protects against common web threats, such as SQL injection and XSS attacks
+AWS Shield: Provides DDoS protection for critical applications and APIs
+Amazon GuardDuty: Continuously monitors and detects potential security threats and anomalies
+AWS CloudTrail: Logs all API requests and changes to resources for compliance and auditing
+Amazon CloudWatch: Monitors application performance and logs metrics for system health
+AWS X-Ray: Traces requests across services for debugging and performance optimization.
+
+5. Scaling Strategy
+Auto Scaling Groups: Automatically scales AWS Fargate tasks and ALB targets based on demand
+Read Replicas in Amazon Aurora: Enhances database performance by distributing read queries across multiple replicas
+DynamoDB On-Demand Mode: Ensures cost-effective scalability by adjusting capacity dynamically
+AWS Global Accelerator: Optimizes network traffic for reduced latency and improved availability across AWS regions
+

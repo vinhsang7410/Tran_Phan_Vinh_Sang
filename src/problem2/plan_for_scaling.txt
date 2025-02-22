@@ -1,0 +1,5 @@
+1. Increase the number of API Gateways & Load Balancers to handle higher traffic.
+2. Increase the number of containers on AWS Fargate or move to Kubernetes on EKS when more flexible scaling is needed
+3. Use DynamoDB Global Tables to reduce global data query latency
+4. Optimize Aurora storage with sharding & read replicas
+5. Use AWS Auto Scaling to automatically scale components on demand
